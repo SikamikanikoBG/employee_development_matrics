@@ -20,8 +20,8 @@ This is a Streamlit-based web application for managing team skills. It allows yo
 2. Change into the project directory:
 
    ```bash
-   cd team-skills-management
-   ```
+   cd employee_development_matrics
+```
 
 3. Install the required dependencies:
 
