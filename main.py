@@ -1,12 +1,16 @@
 import pandas as pd
+from datetime import date
 import streamlit as st
+
+# Configure Streamlit
+st.set_page_config(page_title="Team Skills Management", layout="wide")
 
 # Load data from file
 data_file = "team_skills.csv"
 try:
     df = pd.read_csv(data_file)
 except FileNotFoundError:
-    df = pd.DataFrame(columns=['Employees', 'Skills', 'Level', 'Notes'])
+    df = pd.DataFrame(columns=['Employees', 'Skills', 'Level', 'Notes', 'Date'])
 
 # Pre-defined skills list
 skills_list = [
@@ -18,7 +22,7 @@ skills_list = [
 ]
 
 # Sidebar - Create/Remove employees and skills
-st.sidebar.title("Manage Team Skills")
+st.sidebar.title("Team Skills Management")
 action = st.sidebar.selectbox("Select action:", ["Create Employee", "Remove Employee", "Add Skill", "Remove Skill"])
 
 if action == "Create Employee":
@@ -45,9 +49,13 @@ if action == "Add Skill":
     else:
         selected_skill = st.sidebar.selectbox("Select skill:", available_skills)
         selected_level = st.sidebar.selectbox("Select level:", ['D1', 'D2', 'D3', 'D4'])
+        notes = st.sidebar.text_input("Enter notes:")
         if st.sidebar.button("Add"):
-            df = df.append({'Employees': selected_employee, 'Skills': selected_skill, 'Level': selected_level},
-                           ignore_index=True)
+            today = date.today().strftime("%Y-%m-%d")
+            df = df.append(
+                {'Employees': selected_employee, 'Skills': selected_skill, 'Level': selected_level, 'Notes': notes,
+                 'Date': today},
+                ignore_index=True)
             st.sidebar.success(f"Skill '{selected_skill}' added for employee '{selected_employee}' successfully!")
 
 if action == "Remove Skill":
@@ -65,7 +73,8 @@ if action == "Remove Skill":
 filtered_df = df.dropna(subset=['Skills', 'Level'])
 
 # Select employees to display
-employees_to_display = st.multiselect("Select employees to display:", sorted(set(df['Employees'])), default=sorted(set(df['Employees'])))
+employees_to_display = st.multiselect("Select employees to display:", sorted(set(df['Employees'])),
+                                      default=sorted(set(df['Employees'])))
 
 # Filter data based on selected employees
 filtered_df = filtered_df[filtered_df['Employees'].isin(employees_to_display)]
@@ -79,3 +88,6 @@ else:
 
 # Store the modified DataFrame back to CSV
 df.to_csv(data_file, index=False)
+
+# Display the image
+st.image("dev_matrix.jpeg", width=500)
