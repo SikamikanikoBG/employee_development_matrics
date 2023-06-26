@@ -55,10 +55,11 @@ if action == "Add Skill":
         notes = st.sidebar.text_input("Enter notes:")
         if st.sidebar.button("Add"):
             today = date.today().strftime("%Y-%m-%d")
-            df = df.append(
-                {'Employees': selected_employee, 'Skills': selected_skill, 'Level': selected_level, 'Notes': notes,
-                 'Date': today},
-                ignore_index=True)
+            new_row = pd.DataFrame(
+                {'Employees': [selected_employee], 'Skills': [selected_skill], 'Level': [selected_level],
+                 'Notes': [notes], 'Date': [today]})
+            df = pd.concat([df, new_row], ignore_index=True)
+
             st.sidebar.success(f"Skill '{selected_skill}' added for employee '{selected_employee}' successfully!")
 
 if action == "Remove Skill":
