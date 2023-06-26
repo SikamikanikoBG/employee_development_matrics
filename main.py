@@ -29,7 +29,10 @@ if action == "Create Employee":
     new_employee = st.sidebar.text_input("Enter employee name:")
     if st.sidebar.button("Create"):
         if new_employee.strip() != "":
-            df = df.append({'Employees': new_employee}, ignore_index=True)
+            new_row = pd.DataFrame(
+                {'Employees': [new_employee], 'Skills': [None], 'Level': [None], 'Notes': [None], 'Date': [None]})
+            df = pd.concat([df, new_row], ignore_index=True)
+
             st.sidebar.success(f"Employee '{new_employee}' created successfully!")
         else:
             st.sidebar.warning("Please enter a valid employee name.")
