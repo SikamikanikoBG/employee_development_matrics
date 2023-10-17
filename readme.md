@@ -21,7 +21,7 @@ This is a Streamlit-based web application for managing team skills. It allows yo
 
    ```bash
    cd employee_development_matrics
-```
+   ```
 
 3. Install the required dependencies:
 
