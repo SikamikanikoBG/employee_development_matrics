@@ -1,0 +1,17 @@
+Employees,Skills,Level,Notes,Date
+Peteto,,,,
+Eli,,,,
+Arso,,,,
+Mitko,,,,
+Peteto,Communication - Storytelling,D3,tools - explore tools for advanced viz,2023-06-26
+Peteto,Communication - Presentation building,D2,Take over Data Committee and Comunity presentations,2023-06-26
+Peteto,Linux - Snake2prod - administration,D1,Train the basics - Arsen,2023-06-26
+Peteto,Python - ETL - data acquisition,D1,Train the basics - Arsen,2023-06-26
+Peteto,Linux - terminal and key commands,D1,Train the basics - Arsen,2023-06-26
+Peteto,Python - Pandas - data manipulation,D1,Train the basics - Arsen,2023-06-26
+Peteto,Python - Airflow - create DAGs,D1,Train the basics - Arsen,2023-06-26
+Peteto,Tableau - clean code,D3,To be further assessed,2023-06-26
+Peteto,Tableau - clean viz,D3,To be further assessed,2023-06-26
+Peteto,SQL / Python - Data preparation,D2,"Missing treatment, Outlier trietment",2023-06-26
+Peteto,SQL - Python - Dataset building,D3,start adding new fields in tables (build db) to avoid big joins each time,2023-06-26
+Peteto,SQL clean code,D3,To be further assessed,2023-06-26
